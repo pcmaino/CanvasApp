@@ -40,13 +40,13 @@
         android:layout_marginTop="64dp"
         android:layout_marginBottom="24dp"
         android:text="Graph Line!"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/linLayout"
         app:layout_constraintEnd_toStartOf="@+id/redButton"
         app:layout_constraintStart_toEndOf="@+id/blueButton"
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="128dp"
