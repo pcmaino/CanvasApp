@@ -16,8 +16,10 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:text="Blue Ball"
-        android:textColor="2647b5" />
+        android:textOn="Blue Ball"
+        android:textOff="Blue Ball"
+        android:textColor="#002B99"
+        />
 
     <ToggleButton
         android:id="@+id/redButton"
@@ -28,8 +30,9 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Red Ball"
-        android:textColor="b52634"
+        android:textOn="Red Ball"
+        android:textOff="Red Ball"
+        android:textColor="#990000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,10 +57,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/blueButton">
 
-        <SurfaceView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
 
     </LinearLayout>
 

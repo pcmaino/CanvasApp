@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
@@ -15,11 +16,12 @@ public class MainActivity extends AppCompatActivity {
     //SplashScreen with fade in/out
     //Toasts
 
-    private Button graphButton = null;
-    private ToggleButton redButton = null;
-    private ToggleButton blueButton = null;
-    private LinearLayout linLayout = null;
     private CustomGraph customGraph = null;
+
+    public boolean drawRedBall = false;
+    public boolean drawBlueBall = false;
+
+
 
 
     @Override
@@ -27,35 +29,62 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        linLayout = findViewById(R.id.linLayout);
-        graphButton = findViewById(R.id.graphButton);
-        redButton = findViewById(R.id.redButton);
-        blueButton = findViewById(R.id.blueButton);
+        LinearLayout linLayout = (LinearLayout) findViewById(R.id.linLayout);
+        final Button graphButton = findViewById(R.id.graphButton);
+        final ToggleButton redButton = findViewById(R.id.redButton);
+        final ToggleButton blueButton = findViewById(R.id.blueButton);
+
         customGraph = new CustomGraph(getApplicationContext());
         linLayout.addView(customGraph);
 
         graphButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                customGraph.draw();
             }
         }
         );
 
-        redButton.setOnClickListener(new View.OnClickListener() {
+        redButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
-                //when this is clicked, unclick blue, and vice versa
-            }
-        }
-        );
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    // The toggle is enabled
+                    if(blueButton.isChecked()) {
+                        blueButton.toggle();
+                    }
+                } else {
+                    // The toggle is disabled
+                    if(!blueButton.isChecked()) {
+                        blueButton.toggle();
+                    }
+                }
 
-        blueButton.setOnClickListener(new View.OnClickListener() {
+                //customGraph.draw();
+            }
+        });
+
+        blueButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View view) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if (b) {
+                    // The toggle is enabled
+                    if(redButton.isChecked()) {
+                        redButton.toggle();
+                        //customGraph.draw();
+                    }
+                } else {
+                    // The toggle is disabled
+                    if(!redButton.isChecked()) {
+                        redButton.toggle();
+                    }
+                }
+
+
+
+
 
             }
-        }
-        );
+        });
     }
 }
